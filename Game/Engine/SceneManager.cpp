@@ -12,6 +12,7 @@
 
 #include "TestCameraScript.h"
 #include "Resources.h"
+#include "ParticleSystem.h"
 
 void SceneManager::Update()
 {
@@ -88,7 +89,7 @@ shared_ptr<Scene> SceneManager::LoadTestScene()
 #pragma endregion
 
 	shared_ptr<Scene> scene = make_shared<Scene>();
-	
+
 #pragma region Camera
 	{
 		shared_ptr<GameObject> camera = make_shared<GameObject>();
@@ -100,7 +101,7 @@ shared_ptr<Scene> SceneManager::LoadTestScene()
 		uint8 layerIndex = GET_SINGLE(SceneManager)->LayerNameToIndex(L"UI");
 		camera->GetCamera()->SetCullingMaskLayerOnOff(layerIndex, true); // UI´Â ¾È ÂïÀ½
 		scene->AddGameObject(camera);
-	}	
+	}
 #pragma endregion
 
 #pragma region UI_Camera
@@ -214,6 +215,17 @@ shared_ptr<Scene> SceneManager::LoadTestScene()
 		light->GetLight()->SetSpecular(Vec3(0.2f, 0.2f, 0.2f));
 
 		scene->AddGameObject(light);
+	}
+#pragma endregion
+
+#pragma region ParticleSystem
+	{
+		shared_ptr<GameObject> particle = make_shared<GameObject>();
+		particle->AddComponent(make_shared<Transform>());
+		particle->AddComponent(make_shared<ParticleSystem>());
+		particle->SetCheckFrustum(false);
+		particle->GetTransform()->SetLocalPosition(Vec3(0.f, 0.f, 100.f));
+		scene->AddGameObject(particle);
 	}
 #pragma endregion
 
