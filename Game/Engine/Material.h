@@ -39,8 +39,8 @@ public:
 	void SetShader(shared_ptr<Shader> shader) { _shader = shader; }
 	void SetInt(uint8 index, int32 value) { _params.SetInt(index, value); }
 	void SetFloat(uint8 index, float value) { _params.SetFloat(index, value); }
-	void SetTexture(uint8 index, shared_ptr<Texture> texture)
-	{
+	void SetTexture(uint8 index, shared_ptr<Texture> texture) 
+	{ 
 		_textures[index] = texture;
 		_params.SetTexOn(index, (texture == nullptr ? 0 : 1));
 	}
@@ -51,6 +51,8 @@ public:
 	void PushGraphicsData();
 	void PushComputeData();
 	void Dispatch(uint32 x, uint32 y, uint32 z);
+
+	shared_ptr<Material> Clone();
 
 private:
 	shared_ptr<Shader>	_shader;

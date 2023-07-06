@@ -54,7 +54,7 @@ public:
 
 	void CreateGraphicsShader(const wstring& path, ShaderInfo info = ShaderInfo(), const string& vs = "VS_Main", const string& ps = "PS_Main", const string& gs = "");
 	void CreateComputeShader(const wstring& path, const string& name, const string& version);
-
+	
 	void Update();
 
 	SHADER_TYPE GetShaderType() { return _info.shaderType; }
@@ -75,7 +75,7 @@ private:
 	ComPtr<ID3DBlob>					_vsBlob;
 	ComPtr<ID3DBlob>					_psBlob;
 	ComPtr<ID3DBlob>					_gsBlob;
-	ComPtr<ID3DBlob>					_errBlob;
+	ComPtr<ID3DBlob>					_errBlob;	
 	D3D12_GRAPHICS_PIPELINE_STATE_DESC  _graphicsPipelineDesc = {};
 
 	// ComputeShader
